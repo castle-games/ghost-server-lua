@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+luajit -i -e 'inspect=require("inspect");Object=require("./classic");Api=require("./Api");split=require("./split");a=Api({});json=require("./json");time=require("./time");'

@@ -71,9 +71,9 @@ RUN set -xe && \
         echo "Removed build deps."
 
 # Install lapis and moonscript
-RUN set -xe && \
-        luarocks install lapis ${LAPIS_VERSION} && luarocks install moonscript ${MOONSCRIPT_VERSION} && \
-        echo "Installed lapis and moonscript."
+# RUN set -xe && \
+#         luarocks install lapis ${LAPIS_VERSION} && luarocks install moonscript ${MOONSCRIPT_VERSION} && \
+#         echo "Installed lapis and moonscript."
 
 # cd ${OPENRESTY_PREFIX}/nginx/conf && mv nginx.conf nginx.conf.bk && lapis new && moonc *.moon && \
 
@@ -90,10 +90,8 @@ EXPOSE 80
 
 # Install bash
 RUN apk add bash
+RUN ln -sf /ghost-server/bashrc ${HOME}/.bashrc
 
-# Make an expo user
-# RUN adduser -D -g root -G sudo expo
-# USER expo
-CMD ["lapis", "server"]
+ENTRYPOINT [ "./container-commands" ]
+CMD []
 
-#CMD ["bash"]

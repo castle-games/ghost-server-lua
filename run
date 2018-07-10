@@ -1,2 +1,2 @@
 #!/bin/sh
-docker run --publish=8080:8080 -it --mount src="$(pwd)",target=/ghost-server,type=bind ecc072977a71 $*
+docker run --publish=8080:8080 -it --mount src="$(pwd)",target=/ghost-server,type=bind expo/ghost-server $*

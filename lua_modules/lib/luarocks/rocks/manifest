@@ -1,5 +1,66 @@
-commands = {}
+commands = {
+   json2lua = {
+      "lua-cjson/2.1.0.6-1"
+   },
+   lapis = {
+      "lapis/1.7.0-1"
+   },
+   lua2json = {
+      "lua-cjson/2.1.0.6-1"
+   }
+}
 dependencies = {
+   ansicolors = {
+      ["1.0.2-3"] = {
+         {
+            constraints = {
+               {
+                  op = ">=",
+                  version = {
+                     5, 1, string = "5.1"
+                  }
+               }
+            },
+            name = "lua"
+         }
+      }
+   },
+   date = {
+      ["2.1.2-1"] = {
+         {
+            constraints = {
+               {
+                  op = ">=",
+                  version = {
+                     5, 0, string = "5.0"
+                  }
+               },
+               {
+                  op = "<",
+                  version = {
+                     5, 4, string = "5.4"
+                  }
+               }
+            },
+            name = "lua"
+         }
+      }
+   },
+   etlua = {
+      ["1.3.0-1"] = {
+         {
+            constraints = {
+               {
+                  op = ">=",
+                  version = {
+                     5, 1, string = "5.1"
+                  }
+               }
+            },
+            name = "lua"
+         }
+      }
+   },
    inspect = {
       ["3.1.1-0"] = {
          {
@@ -11,6 +72,133 @@ dependencies = {
                   }
                }
             },
+            name = "lua"
+         }
+      }
+   },
+   lapis = {
+      ["1.7.0-1"] = {
+         {
+            constraints = {
+               {
+                  op = "~>",
+                  version = {
+                     5, 1, string = "5.1"
+                  }
+               }
+            },
+            name = "lua"
+         },
+         {
+            constraints = {},
+            name = "ansicolors"
+         },
+         {
+            constraints = {},
+            name = "date"
+         },
+         {
+            constraints = {},
+            name = "etlua"
+         },
+         {
+            constraints = {},
+            name = "loadkit"
+         },
+         {
+            constraints = {},
+            name = "lpeg"
+         },
+         {
+            constraints = {},
+            name = "lua-cjson"
+         },
+         {
+            constraints = {},
+            name = "luaossl"
+         },
+         {
+            constraints = {},
+            name = "luafilesystem"
+         },
+         {
+            constraints = {},
+            name = "luasocket"
+         },
+         {
+            constraints = {},
+            name = "mimetypes"
+         },
+         {
+            constraints = {},
+            name = "pgmoon"
+         }
+      }
+   },
+   loadkit = {
+      ["1.1.0-1"] = {
+         {
+            constraints = {
+               {
+                  op = ">=",
+                  version = {
+                     5, 1, string = "5.1"
+                  }
+               }
+            },
+            name = "lua"
+         }
+      }
+   },
+   lpeg = {
+      ["1.0.1-1"] = {
+         {
+            constraints = {
+               {
+                  op = ">=",
+                  version = {
+                     5, 1, string = "5.1"
+                  }
+               }
+            },
+            name = "lua"
+         }
+      }
+   },
+   ["lua-cjson"] = {
+      ["2.1.0.6-1"] = {
+         {
+            constraints = {
+               {
+                  op = ">=",
+                  version = {
+                     5, 1, string = "5.1"
+                  }
+               }
+            },
+            name = "lua"
+         }
+      }
+   },
+   luafilesystem = {
+      ["1.7.0-2"] = {
+         {
+            constraints = {
+               {
+                  op = ">=",
+                  version = {
+                     5, 1, string = "5.1"
+                  }
+               }
+            },
+            name = "lua"
+         }
+      }
+   },
+   luaossl = {
+      ["20180708-0"] = {
+         {
+            constraints = {},
             name = "lua"
          }
       }
@@ -29,20 +217,421 @@ dependencies = {
             name = "lua"
          }
       }
+   },
+   mimetypes = {
+      ["1.0.0-2"] = {
+         {
+            constraints = {
+               {
+                  op = ">=",
+                  version = {
+                     5, 1, string = "5.1"
+                  }
+               }
+            },
+            name = "lua"
+         }
+      }
+   },
+   pgmoon = {
+      ["1.9.0-1"] = {
+         {
+            constraints = {
+               {
+                  op = ">=",
+                  version = {
+                     5, 1, string = "5.1"
+                  }
+               }
+            },
+            name = "lua"
+         },
+         {
+            constraints = {},
+            name = "luabitop"
+         },
+         {
+            constraints = {},
+            name = "lpeg"
+         }
+      }
    }
 }
 modules = {
+   _openssl = {
+      "luaossl/20180708-0"
+   },
+   ansicolors = {
+      "ansicolors/1.0.2-3"
+   },
+   cjson = {
+      "lua-cjson/2.1.0.6-1"
+   },
+   ["cjson.util"] = {
+      "lua-cjson/2.1.0.6-1"
+   },
+   date = {
+      "date/2.1.2-1"
+   },
+   etlua = {
+      "etlua/1.3.0-1"
+   },
    inspect = {
       "inspect/3.1.1-0"
    },
+   json2lua = {
+      "lua-cjson/2.1.0.6-1"
+   },
+   lapis = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.application"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.cache"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.cmd.actions"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.cmd.attached_server"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.cmd.cqueues"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.cmd.cqueues.actions"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.cmd.cqueues.attached_server"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.cmd.cqueues.templates.config"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.cmd.nginx"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.cmd.nginx.actions"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.cmd.nginx.attached_server"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.cmd.nginx.config"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.cmd.nginx.templates.config"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.cmd.nginx.templates.config_etlua"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.cmd.nginx.templates.mime_types"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.cmd.path"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.cmd.templates.app"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.cmd.templates.app_lua"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.cmd.templates.flow"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.cmd.templates.gitignore"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.cmd.templates.model"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.cmd.templates.models"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.cmd.templates.models_lua"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.cmd.templates.spec"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.cmd.templates.tup"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.cmd.util"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.config"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.cqueues"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.csrf"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.db"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.db.base"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.db.base_model"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.db.migrations"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.db.model"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.db.model.relations"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.db.mysql"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.db.mysql.model"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.db.mysql.schema"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.db.pagination"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.db.postgres"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.db.postgres.model"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.db.postgres.schema"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.db.schema"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.environment"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.etlua"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.features.etlua"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.flow"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.html"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.http"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.logging"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.lua"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.moonscript.widget_optimizer"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.nginx"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.nginx.cache"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.nginx.context"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.nginx.http"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.nginx.postgres"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.request"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.router"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.server"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.session"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.spec"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.spec.db"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.spec.request"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.spec.server"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.spec.shared"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.spec.stack"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.time"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.util"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.util.encoding"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.util.functions"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.validate"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.version"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.views.error"] = {
+      "lapis/1.7.0-1"
+   },
+   ["lapis.views.layout"] = {
+      "lapis/1.7.0-1"
+   },
+   lfs = {
+      "luafilesystem/1.7.0-2"
+   },
+   loadkit = {
+      "loadkit/1.1.0-1"
+   },
+   lpeg = {
+      "lpeg/1.0.1-1"
+   },
    ltn12 = {
       "luasocket/3.0rc1-2"
+   },
+   lua2json = {
+      "lua-cjson/2.1.0.6-1"
    },
    mime = {
       "luasocket/3.0rc1-2"
    },
    ["mime.core"] = {
       "luasocket/3.0rc1-2"
+   },
+   mimetypes = {
+      "mimetypes/1.0.0-2"
+   },
+   openssl = {
+      "luaossl/20180708-0"
+   },
+   ["openssl.auxlib"] = {
+      "luaossl/20180708-0"
+   },
+   ["openssl.bignum"] = {
+      "luaossl/20180708-0"
+   },
+   ["openssl.cipher"] = {
+      "luaossl/20180708-0"
+   },
+   ["openssl.des"] = {
+      "luaossl/20180708-0"
+   },
+   ["openssl.digest"] = {
+      "luaossl/20180708-0"
+   },
+   ["openssl.hmac"] = {
+      "luaossl/20180708-0"
+   },
+   ["openssl.ocsp.basic"] = {
+      "luaossl/20180708-0"
+   },
+   ["openssl.ocsp.response"] = {
+      "luaossl/20180708-0"
+   },
+   ["openssl.pkcs12"] = {
+      "luaossl/20180708-0"
+   },
+   ["openssl.pkey"] = {
+      "luaossl/20180708-0"
+   },
+   ["openssl.pubkey"] = {
+      "luaossl/20180708-0"
+   },
+   ["openssl.rand"] = {
+      "luaossl/20180708-0"
+   },
+   ["openssl.ssl"] = {
+      "luaossl/20180708-0"
+   },
+   ["openssl.ssl.context"] = {
+      "luaossl/20180708-0"
+   },
+   ["openssl.x509"] = {
+      "luaossl/20180708-0"
+   },
+   ["openssl.x509.altname"] = {
+      "luaossl/20180708-0"
+   },
+   ["openssl.x509.chain"] = {
+      "luaossl/20180708-0"
+   },
+   ["openssl.x509.crl"] = {
+      "luaossl/20180708-0"
+   },
+   ["openssl.x509.csr"] = {
+      "luaossl/20180708-0"
+   },
+   ["openssl.x509.extension"] = {
+      "luaossl/20180708-0"
+   },
+   ["openssl.x509.name"] = {
+      "luaossl/20180708-0"
+   },
+   ["openssl.x509.store"] = {
+      "luaossl/20180708-0"
+   },
+   ["openssl.x509.verify_param"] = {
+      "luaossl/20180708-0"
+   },
+   pgmoon = {
+      "pgmoon/1.9.0-1"
+   },
+   ["pgmoon.arrays"] = {
+      "pgmoon/1.9.0-1"
+   },
+   ["pgmoon.cqueues"] = {
+      "pgmoon/1.9.0-1"
+   },
+   ["pgmoon.crypto"] = {
+      "pgmoon/1.9.0-1"
+   },
+   ["pgmoon.hstore"] = {
+      "pgmoon/1.9.0-1"
+   },
+   ["pgmoon.json"] = {
+      "pgmoon/1.9.0-1"
+   },
+   ["pgmoon.socket"] = {
+      "pgmoon/1.9.0-1"
+   },
+   ["pgmoon.util"] = {
+      "pgmoon/1.9.0-1"
+   },
+   re = {
+      "lpeg/1.0.1-1"
    },
    socket = {
       "luasocket/3.0rc1-2"
@@ -76,6 +665,42 @@ modules = {
    }
 }
 repository = {
+   ansicolors = {
+      ["1.0.2-3"] = {
+         {
+            arch = "installed",
+            commands = {},
+            dependencies = {},
+            modules = {
+               ansicolors = "ansicolors.lua"
+            }
+         }
+      }
+   },
+   date = {
+      ["2.1.2-1"] = {
+         {
+            arch = "installed",
+            commands = {},
+            dependencies = {},
+            modules = {
+               date = "date.lua"
+            }
+         }
+      }
+   },
+   etlua = {
+      ["1.3.0-1"] = {
+         {
+            arch = "installed",
+            commands = {},
+            dependencies = {},
+            modules = {
+               etlua = "etlua.lua"
+            }
+         }
+      }
+   },
    inspect = {
       ["3.1.1-0"] = {
          {
@@ -84,6 +709,198 @@ repository = {
             dependencies = {},
             modules = {
                inspect = "inspect.lua"
+            }
+         }
+      }
+   },
+   lapis = {
+      ["1.7.0-1"] = {
+         {
+            arch = "installed",
+            commands = {
+               lapis = "lapis"
+            },
+            dependencies = {
+               ansicolors = "1.0.2-3",
+               date = "2.1.2-1",
+               etlua = "1.3.0-1",
+               loadkit = "1.1.0-1",
+               lpeg = "1.0.1-1",
+               ["lua-cjson"] = "2.1.0.6-1",
+               luafilesystem = "1.7.0-2",
+               luaossl = "20180708-0",
+               luasocket = "3.0rc1-2",
+               mimetypes = "1.0.0-2",
+               pgmoon = "1.9.0-1"
+            },
+            modules = {
+               lapis = "lapis/init.lua",
+               ["lapis.application"] = "lapis/application.lua",
+               ["lapis.cache"] = "lapis/cache.lua",
+               ["lapis.cmd.actions"] = "lapis/cmd/actions.lua",
+               ["lapis.cmd.attached_server"] = "lapis/cmd/attached_server.lua",
+               ["lapis.cmd.cqueues"] = "lapis/cmd/cqueues.lua",
+               ["lapis.cmd.cqueues.actions"] = "lapis/cmd/cqueues/actions.lua",
+               ["lapis.cmd.cqueues.attached_server"] = "lapis/cmd/cqueues/attached_server.lua",
+               ["lapis.cmd.cqueues.templates.config"] = "lapis/cmd/cqueues/templates/config.lua",
+               ["lapis.cmd.nginx"] = "lapis/cmd/nginx.lua",
+               ["lapis.cmd.nginx.actions"] = "lapis/cmd/nginx/actions.lua",
+               ["lapis.cmd.nginx.attached_server"] = "lapis/cmd/nginx/attached_server.lua",
+               ["lapis.cmd.nginx.config"] = "lapis/cmd/nginx/config.lua",
+               ["lapis.cmd.nginx.templates.config"] = "lapis/cmd/nginx/templates/config.lua",
+               ["lapis.cmd.nginx.templates.config_etlua"] = "lapis/cmd/nginx/templates/config_etlua.lua",
+               ["lapis.cmd.nginx.templates.mime_types"] = "lapis/cmd/nginx/templates/mime_types.lua",
+               ["lapis.cmd.path"] = "lapis/cmd/path.lua",
+               ["lapis.cmd.templates.app"] = "lapis/cmd/templates/app.lua",
+               ["lapis.cmd.templates.app_lua"] = "lapis/cmd/templates/app_lua.lua",
+               ["lapis.cmd.templates.flow"] = "lapis/cmd/templates/flow.lua",
+               ["lapis.cmd.templates.gitignore"] = "lapis/cmd/templates/gitignore.lua",
+               ["lapis.cmd.templates.model"] = "lapis/cmd/templates/model.lua",
+               ["lapis.cmd.templates.models"] = "lapis/cmd/templates/models.lua",
+               ["lapis.cmd.templates.models_lua"] = "lapis/cmd/templates/models_lua.lua",
+               ["lapis.cmd.templates.spec"] = "lapis/cmd/templates/spec.lua",
+               ["lapis.cmd.templates.tup"] = "lapis/cmd/templates/tup.lua",
+               ["lapis.cmd.util"] = "lapis/cmd/util.lua",
+               ["lapis.config"] = "lapis/config.lua",
+               ["lapis.cqueues"] = "lapis/cqueues.lua",
+               ["lapis.csrf"] = "lapis/csrf.lua",
+               ["lapis.db"] = "lapis/db.lua",
+               ["lapis.db.base"] = "lapis/db/base.lua",
+               ["lapis.db.base_model"] = "lapis/db/base_model.lua",
+               ["lapis.db.migrations"] = "lapis/db/migrations.lua",
+               ["lapis.db.model"] = "lapis/db/model.lua",
+               ["lapis.db.model.relations"] = "lapis/db/model/relations.lua",
+               ["lapis.db.mysql"] = "lapis/db/mysql.lua",
+               ["lapis.db.mysql.model"] = "lapis/db/mysql/model.lua",
+               ["lapis.db.mysql.schema"] = "lapis/db/mysql/schema.lua",
+               ["lapis.db.pagination"] = "lapis/db/pagination.lua",
+               ["lapis.db.postgres"] = "lapis/db/postgres.lua",
+               ["lapis.db.postgres.model"] = "lapis/db/postgres/model.lua",
+               ["lapis.db.postgres.schema"] = "lapis/db/postgres/schema.lua",
+               ["lapis.db.schema"] = "lapis/db/schema.lua",
+               ["lapis.environment"] = "lapis/environment.lua",
+               ["lapis.etlua"] = "lapis/etlua.lua",
+               ["lapis.features.etlua"] = "lapis/features/etlua.lua",
+               ["lapis.flow"] = "lapis/flow.lua",
+               ["lapis.html"] = "lapis/html.lua",
+               ["lapis.http"] = "lapis/http.lua",
+               ["lapis.logging"] = "lapis/logging.lua",
+               ["lapis.lua"] = "lapis/lua.lua",
+               ["lapis.moonscript.widget_optimizer"] = "lapis/moonscript/widget_optimizer.lua",
+               ["lapis.nginx"] = "lapis/nginx.lua",
+               ["lapis.nginx.cache"] = "lapis/nginx/cache.lua",
+               ["lapis.nginx.context"] = "lapis/nginx/context.lua",
+               ["lapis.nginx.http"] = "lapis/nginx/http.lua",
+               ["lapis.nginx.postgres"] = "lapis/nginx/postgres.lua",
+               ["lapis.request"] = "lapis/request.lua",
+               ["lapis.router"] = "lapis/router.lua",
+               ["lapis.server"] = "lapis/server.lua",
+               ["lapis.session"] = "lapis/session.lua",
+               ["lapis.spec"] = "lapis/spec.lua",
+               ["lapis.spec.db"] = "lapis/spec/db.lua",
+               ["lapis.spec.request"] = "lapis/spec/request.lua",
+               ["lapis.spec.server"] = "lapis/spec/server.lua",
+               ["lapis.spec.shared"] = "lapis/spec/shared.lua",
+               ["lapis.spec.stack"] = "lapis/spec/stack.lua",
+               ["lapis.time"] = "lapis/time.lua",
+               ["lapis.util"] = "lapis/util.lua",
+               ["lapis.util.encoding"] = "lapis/util/encoding.lua",
+               ["lapis.util.functions"] = "lapis/util/functions.lua",
+               ["lapis.validate"] = "lapis/validate.lua",
+               ["lapis.version"] = "lapis/version.lua",
+               ["lapis.views.error"] = "lapis/views/error.lua",
+               ["lapis.views.layout"] = "lapis/views/layout.lua"
+            }
+         }
+      }
+   },
+   loadkit = {
+      ["1.1.0-1"] = {
+         {
+            arch = "installed",
+            commands = {},
+            dependencies = {},
+            modules = {
+               loadkit = "loadkit.lua"
+            }
+         }
+      }
+   },
+   lpeg = {
+      ["1.0.1-1"] = {
+         {
+            arch = "installed",
+            commands = {},
+            dependencies = {},
+            modules = {
+               lpeg = "lpeg.so",
+               re = "re.lua"
+            }
+         }
+      }
+   },
+   ["lua-cjson"] = {
+      ["2.1.0.6-1"] = {
+         {
+            arch = "installed",
+            commands = {
+               json2lua = "json2lua",
+               lua2json = "lua2json"
+            },
+            dependencies = {},
+            modules = {
+               cjson = "cjson.so",
+               ["cjson.util"] = "cjson/util.lua",
+               json2lua = "json2lua.lua",
+               lua2json = "lua2json.lua"
+            }
+         }
+      }
+   },
+   luafilesystem = {
+      ["1.7.0-2"] = {
+         {
+            arch = "installed",
+            commands = {},
+            dependencies = {},
+            modules = {
+               lfs = "lfs.so"
+            }
+         }
+      }
+   },
+   luaossl = {
+      ["20180708-0"] = {
+         {
+            arch = "installed",
+            commands = {},
+            dependencies = {},
+            modules = {
+               _openssl = "_openssl.so",
+               openssl = "openssl.lua",
+               ["openssl.auxlib"] = "openssl/auxlib.lua",
+               ["openssl.bignum"] = "openssl/bignum.lua",
+               ["openssl.cipher"] = "openssl/cipher.lua",
+               ["openssl.des"] = "openssl/des.lua",
+               ["openssl.digest"] = "openssl/digest.lua",
+               ["openssl.hmac"] = "openssl/hmac.lua",
+               ["openssl.ocsp.basic"] = "openssl/ocsp/basic.lua",
+               ["openssl.ocsp.response"] = "openssl/ocsp/response.lua",
+               ["openssl.pkcs12"] = "openssl/pkcs12.lua",
+               ["openssl.pkey"] = "openssl/pkey.lua",
+               ["openssl.pubkey"] = "openssl/pubkey.lua",
+               ["openssl.rand"] = "openssl/rand.lua",
+               ["openssl.ssl"] = "openssl/ssl.lua",
+               ["openssl.ssl.context"] = "openssl/ssl/context.lua",
+               ["openssl.x509"] = "openssl/x509.lua",
+               ["openssl.x509.altname"] = "openssl/x509/altname.lua",
+               ["openssl.x509.chain"] = "openssl/x509/chain.lua",
+               ["openssl.x509.crl"] = "openssl/x509/crl.lua",
+               ["openssl.x509.csr"] = "openssl/x509/csr.lua",
+               ["openssl.x509.extension"] = "openssl/x509/extension.lua",
+               ["openssl.x509.name"] = "openssl/x509/name.lua",
+               ["openssl.x509.store"] = "openssl/x509/store.lua",
+               ["openssl.x509.verify_param"] = "openssl/x509/verify_param.lua"
             }
          }
       }
@@ -108,6 +925,39 @@ repository = {
                ["socket.tp"] = "socket/tp.lua",
                ["socket.unix"] = "socket/unix.so",
                ["socket.url"] = "socket/url.lua"
+            }
+         }
+      }
+   },
+   mimetypes = {
+      ["1.0.0-2"] = {
+         {
+            arch = "installed",
+            commands = {},
+            dependencies = {},
+            modules = {
+               mimetypes = "mimetypes.lua"
+            }
+         }
+      }
+   },
+   pgmoon = {
+      ["1.9.0-1"] = {
+         {
+            arch = "installed",
+            commands = {},
+            dependencies = {
+               lpeg = "1.0.1-1"
+            },
+            modules = {
+               pgmoon = "pgmoon/init.lua",
+               ["pgmoon.arrays"] = "pgmoon/arrays.lua",
+               ["pgmoon.cqueues"] = "pgmoon/cqueues.lua",
+               ["pgmoon.crypto"] = "pgmoon/crypto.lua",
+               ["pgmoon.hstore"] = "pgmoon/hstore.lua",
+               ["pgmoon.json"] = "pgmoon/json.lua",
+               ["pgmoon.socket"] = "pgmoon/socket.lua",
+               ["pgmoon.util"] = "pgmoon/util.lua"
             }
          }
       }

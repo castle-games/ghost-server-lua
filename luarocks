@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+__DIRNAME="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+echo $__DIRNAME
+luarocks --tree=$__DIRNAME/lua_modules $*
+

@@ -1,5 +1,8 @@
 -- Logs its arguments
 -- Use the bare arguments for strings; does an inspect for everything else
+
+local inspect = require("inspect")
+
 function log(...)
   local t = {}
   for i, x in ipairs({...}) do

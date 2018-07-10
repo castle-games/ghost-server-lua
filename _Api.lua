@@ -1,4 +1,4 @@
-local Object = require('./classic')
+local Object = require("./classic")
 
 local _Api = Object:extend()
 
@@ -13,6 +13,9 @@ function _Api:new(context)
 end
 
 local function startsWith(s, prefix)
+  if type(s) ~= "string" then
+    return false
+  end
   return string.sub(s, 1, string.len(prefix)) == prefix
 end
 
@@ -21,11 +24,15 @@ local function slice(t, start, fin)
 end
 
 function _Api:callMethod(method, args)
-  if startsWith(method, '_') or method == 'super' or _Api[method] ~= nil then
+  if not self.response then
+    self.response = {}
+  end
+  
+  if startsWith(method, "_") or method == "super" or _Api[method] ~= nil then
     self.response.error = {
-      type = 'API_ERROR',
-      code = 'RESERVED_METHOD_NAME',
-      message = 'The method `' .. method .. '` is a reserved method name',
+      type = "API_ERROR",
+      code = "RESERVED_METHOD_NAME",
+      message = "The method `" .. method .. "` is a reserved method name",
       props = {
         method = method
       }
@@ -35,9 +42,9 @@ function _Api:callMethod(method, args)
 
   if not Api[method] then
     self.response.error = {
-      type = 'API_ERROR',
-      code = 'NOT_IMPLEMENTED',
-      message = 'No such method `' .. method .. '` in the API',
+      type = "API_ERROR",
+      code = "NOT_IMPLEMENTED",
+      message = "No such method `" .. method .. "` in the API",
       props = {
         method = method
       }
@@ -50,10 +57,10 @@ function _Api:callMethod(method, args)
     self.response.result = resultOrErr
     self.response.error = nil
   else
-    local start, fin = string.find(resultOrErr, ': ')
+    local start, fin = string.find(resultOrErr, ": ")
     local err = string.sub(resultOrErr, fin + 1)
 
-    local pos, len = string.find(err, '[%u%d_%d:]+:')
+    local pos, len = string.find(err, "[%u%d_%d:]+:")
     if pos == nil or pos ~= 1 then
       self.response.error = {
         type = nil,
@@ -64,7 +71,7 @@ function _Api:callMethod(method, args)
     else
       local prefix = string.sub(err, pos, len)
       local rest = string.sub(err, pos + len)
-      local parts = split(prefix, ':')
+      local parts = split(prefix, ":")
       if #parts == 1 then
         self.response.error = {
           type = parts[1],
@@ -93,7 +100,7 @@ function _Api:callMethod(method, args)
 end
 
 function _Api:setData(key, val)
-  if type(key) == 'table' then
+  if type(key) == "table" then
     for k, v in pairs(key) do
       self:setData(k, v)
     end

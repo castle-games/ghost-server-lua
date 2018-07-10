@@ -3,13 +3,15 @@ dofile("set_paths.lua")
 local time = require("./time")
 local _TK = time.start("request")
 
+local cjson = require("cjson")
 local inspect = require("inspect")
 local io = require("io")
 local lapis = require("lapis")
 local config = require("lapis.config")
 -- local console = require("lapis.console")
 
-local json = require("./json")
+local Api = require("./Api")
+local bitser = require("./bitser")
 local log = require("./log")
 local split = require("./split")
 
@@ -43,7 +45,7 @@ local function interpretArg(s)
 end
 
 app:match(
-  "/--/api/:method(/*)",
+  "/api/:method(/*)",
   function(self)
     local tk = time.start()
     local m = self.params.method
@@ -68,9 +70,12 @@ app:match(
       end
     end
 
-    time.done("api." .. m, {key = tk, message = m .. json.encode(args)})
+    local result = Api:callMethod(m, args)
+
+    time.done("api." .. m, {key = tk, message = m .. cjson.encode(args)})
     time.done("request", {key = _TK})
-    return inspect(result)
+    self:write {content_type = "application/x-lua+bitser"}
+    return bitser.dumps(result)
   end
 )
 

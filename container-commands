@@ -7,6 +7,9 @@ case "$1" in
         shell)
             bash
             ;;
+        repl)
+            ./repl
+            ;;
         *)
             bash
             ;;

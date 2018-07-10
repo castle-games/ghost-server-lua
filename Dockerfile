@@ -70,16 +70,17 @@ RUN set -xe && \
         apk del .build-deps && \
         echo "Removed build deps."
 
-# Install lapis and moonscript
-# RUN set -xe && \
-#         luarocks install lapis ${LAPIS_VERSION} && luarocks install moonscript ${MOONSCRIPT_VERSION} && \
-#         echo "Installed lapis and moonscript."
+#Install lapis and moonscript
+RUN set -xe && \
+        luarocks install lapis ${LAPIS_VERSION} && luarocks install moonscript ${MOONSCRIPT_VERSION} && \
+        echo "Installed lapis and moonscript."
 
 # cd ${OPENRESTY_PREFIX}/nginx/conf && mv nginx.conf nginx.conf.bk && lapis new && moonc *.moon && \
 
 # # Set work directory
 # WORKDIR ${OPENRESTY_PREFIX}/nginx/conf
 WORKDIR /ghost-server
+ENV PATH=${PATH}:/ghost-server/lua_modules/bin
 
 # Add git
 RUN apk add git

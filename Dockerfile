@@ -75,6 +75,12 @@ RUN set -xe && \
         luarocks install lapis ${LAPIS_VERSION} && luarocks install moonscript ${MOONSCRIPT_VERSION} && \
         echo "Installed lapis and moonscript."
 
+# Install readline and luaprompt for repl
+RUN set -xe && \
+        apk add readline-dev && \
+        luarocks install luaprompt && \
+        echo "Installed luaprompt."
+
 # cd ${OPENRESTY_PREFIX}/nginx/conf && mv nginx.conf nginx.conf.bk && lapis new && moonc *.moon && \
 
 # # Set work directory

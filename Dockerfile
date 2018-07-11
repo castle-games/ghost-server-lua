@@ -81,6 +81,11 @@ RUN set -xe && \
         luarocks install luaprompt && \
         echo "Installed luaprompt."
 
+# Install postgres client
+RUN set -xe && \
+        apk add postgresql-client && \
+        echo "Installed psql."
+
 # cd ${OPENRESTY_PREFIX}/nginx/conf && mv nginx.conf nginx.conf.bk && lapis new && moonc *.moon && \
 
 # # Set work directory

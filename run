@@ -1,4 +1,0 @@
-#!/bin/sh
-PORT=8080
-echo "http://localhost:$PORT"
-docker run --publish=$PORT:$PORT -it --mount src="$(pwd)",target=/ghost-server,type=bind expo/ghost-server $*

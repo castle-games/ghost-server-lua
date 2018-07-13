@@ -84,7 +84,8 @@ RUN set -xe && \
 # Install postgres client
 RUN set -xe && \
         apk add postgresql-client && \
-        echo "Installed psql."
+        apk add  pgcli --update-cache --repository http://dl-3.alpinelinux.org/alpine/edge/testing/ --allow-untrusted && \
+        echo "Installed psql and pgcli."
 
 # cd ${OPENRESTY_PREFIX}/nginx/conf && mv nginx.conf nginx.conf.bk && lapis new && moonc *.moon && \
 

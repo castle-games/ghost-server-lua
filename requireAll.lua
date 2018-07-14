@@ -1,4 +1,4 @@
-local pl = require "pl.import_into"()
+local pl = require("pl.import_into")()
 local lfs = require("lfs")
 
 local etc = require("./etc")

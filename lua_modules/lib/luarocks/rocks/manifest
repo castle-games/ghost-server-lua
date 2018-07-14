@@ -118,6 +118,21 @@ dependencies = {
          }
       }
    },
+   luacrypto = {
+      ["0.3.2-2"] = {
+         {
+            constraints = {
+               {
+                  op = ">=",
+                  version = {
+                     5, 1, string = "5.1"
+                  }
+               }
+            },
+            name = "lua"
+         }
+      }
+   },
    luafilesystem = {
       ["1.7.0-2"] = {
          {
@@ -215,6 +230,9 @@ modules = {
    },
    ["cjson.util"] = {
       "lua-cjson/2.1.0.6-1"
+   },
+   crypto = {
+      "luacrypto/0.3.2-2"
    },
    date = {
       "date/2.1.2-1"
@@ -587,6 +605,18 @@ repository = {
                ["cjson.util"] = "cjson/util.lua",
                json2lua = "json2lua.lua",
                lua2json = "lua2json.lua"
+            }
+         }
+      }
+   },
+   luacrypto = {
+      ["0.3.2-2"] = {
+         {
+            arch = "installed",
+            commands = {},
+            dependencies = {},
+            modules = {
+               crypto = "crypto.so"
             }
          }
       }

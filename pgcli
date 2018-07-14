@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
 echo 'Type `\dt` to list tables'
-export PGPASSWORD=`luajit -e 'local secret=require("./secret/init"); print(secret.postgres.password);'`
-`luajit -e 'local secret = require("./secret/init"); local pg = secret.postgres ; print(string.format("pgcli --host=%s --username=%s", pg.host, pg.user))'` --prompt="ghostgres> " $*
+export PGPASSWORD=`luajit -e 'local secret=require("./secret"); print(secret.postgres.password);'`
+`luajit -e 'local secret = require("./secret"); local pg = secret.postgres ; print(string.format("pgcli --host=%s --username=%s", pg.host, pg.user))'` --prompt="ghostgres> " $*

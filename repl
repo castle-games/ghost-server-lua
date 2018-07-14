@@ -1,2 +1,2 @@
 #!/usr/bin/env sh
-luap -l set_paths -i -e 'inspect=require("inspect");Object=require("./classic");Api=require("./Api");split=require("./split");a=Api({});json=require("./json");time=require("./time");'
+luap -l set_paths -i -e 'inspect=require("inspect");Object=require("./classic");Api=require("./Api");split=require("./split");a=Api({});time=require("./time");'

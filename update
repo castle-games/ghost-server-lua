@@ -1,0 +1,13 @@
+#!/usr/bin/env sh
+echo "# git pulling..."
+git pull --rebase
+
+echo "# git pulling secret..."
+pushd ghost-secret
+git pull --rebase
+popd
+
+echo "# pulling docker image..."
+./pull-docker-image
+
+echo "# done."

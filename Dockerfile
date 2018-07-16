@@ -105,6 +105,9 @@ EXPOSE 80
 RUN apk add bash
 RUN ln -sf /ghost-server/bashrc ${HOME}/.bashrc
 
+# Install vim
+RUN apk add vim
+
 ENTRYPOINT [ "./container-commands" ]
 CMD []
 

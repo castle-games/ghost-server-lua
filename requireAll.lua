@@ -37,7 +37,7 @@ local function requireModule(m)
     -- local pltk = time.start()
     -- require pl into global
     require(m)
-    _G[pl] = require 'pl.import_into'()
+    _G.pl = require 'pl.import_into'()
   -- time.done(pltk, 'requiring-pl-into-global')
   end
   return time.done(tk, 'require ' .. m, {quiet = true})
@@ -82,7 +82,7 @@ local function getLuaFiles()
       fl:extend(files)
     end
   end
-  time.done(tk, 'get-lua-files')
+  time.done(tk, 'get-lua-files', {threshold = 300})
   return fl
 end
 
@@ -91,11 +91,6 @@ local function requireLuaFiles()
   local times = {}
   local BLACKLIST = {
     set_paths = true
-    -- requireAll = true,
-    -- Api = true,
-    -- secret = true,
-    -- log = true,
-    -- etc = true,
   }
   for _, p in ipairs(files) do
     local v = varNameForFile(p)
@@ -129,11 +124,13 @@ local function requireAllAndLog()
   local allTime = time.done(tk, 'require-all-files', {quiet = true})
   local s = ''
   local n = 0
+  local ft = 0
   for m, t in pairs(times2) do
     s = s .. m .. '(' .. math.ceil(t) .. ') '
     n = n + 1
+    ft = ft + t
   end
-  log('Required ' .. n .. ' files in ' .. math.ceil(allTime) .. 'ms')
+  log('Required ' .. n .. ' files in ' .. math.ceil(ft) .. 'ms')
   log(s)
   local combinedTime = time.done(allTk, 'require-all-combined', {quiet = true})
   log(math.ceil(combinedTime) .. 'ms')
@@ -145,5 +142,9 @@ return {
   requireAll = requireAll,
   requireAllAndLog = requireAllAndLog,
   manifest = manifest,
-  getLuaFiles = getLuaFiles
+  getLuaFiles = getLuaFiles,
+  requireLuaFiles = requireLuaFiles,
+  stripLuaExtension = stripLuaExtension,
+  varNameForFile = varNameForFile,
+  varNameForModule = varNameForModule
 }

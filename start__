@@ -1,4 +1,4 @@
 #!/bin/sh
 PORT=${PORT:=8080}
 echo "http://localhost:$PORT"
-docker run -it --publish=$PORT:$PORT --mount src="$(pwd)",target=/ghost-server,type=bind --mount src="$(pwd)/../ghost-secret",target=/ghost-secret,type=bind  expo/ghost-server server $*
+docker run -it --net="host" --publish=$PORT:$PORT --mount src="$(pwd)",target=/ghost-server,type=bind --mount src="$(pwd)/../ghost-secret",target=/ghost-secret,type=bind  expo/ghost-server server $*

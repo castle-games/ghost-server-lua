@@ -22,6 +22,9 @@ dependencies = {
          }
       }
    },
+   classic = {
+      ["0.1.0-1"] = {}
+   },
    date = {
       ["2.1.2-1"] = {
          {
@@ -230,6 +233,9 @@ modules = {
    },
    ["cjson.util"] = {
       "lua-cjson/2.1.0.6-1"
+   },
+   classic = {
+      "classic/0.1.0-1"
    },
    crypto = {
       "luacrypto/0.3.2-2"
@@ -526,6 +532,18 @@ repository = {
             dependencies = {},
             modules = {
                ansicolors = "ansicolors.lua"
+            }
+         }
+      }
+   },
+   classic = {
+      ["0.1.0-1"] = {
+         {
+            arch = "installed",
+            commands = {},
+            dependencies = {},
+            modules = {
+               classic = "classic.lua"
             }
          }
       }

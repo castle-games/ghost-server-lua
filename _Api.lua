@@ -1,6 +1,6 @@
 local pl = require('pl.import_into')()
 
-local Object = require("./classic")
+local Object = require("classic")
 
 local _Api = Object:extend()
 

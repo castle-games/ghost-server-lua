@@ -1,3 +1,5 @@
+local pl = require('pl.import_into')()
+
 local Object = require("./classic")
 
 local _Api = Object:extend()
@@ -71,7 +73,7 @@ function _Api:callMethod(method, args)
     else
       local prefix = string.sub(err, pos, len)
       local rest = string.sub(err, pos + len)
-      local parts = split(prefix, ":")
+      local parts = pl.stringx.split(prefix, ":")
       if #parts == 1 then
         self.response.error = {
           type = parts[1],

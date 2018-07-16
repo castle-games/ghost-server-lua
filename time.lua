@@ -26,7 +26,7 @@ function done(key, label, opts)
   local startTime = _startTimes[key]
   local dt = endTime - startTime
   if (not opts.quiet) and ((not threshold) or dt > threshold) then
-    log(label .. ': ' .. dt .. 'ms ' .. message)
+    log(label .. ': ' .. math.ceil(dt) .. 'ms ' .. message)
   end
   return dt
 end

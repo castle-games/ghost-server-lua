@@ -9,11 +9,12 @@ local io = require("io")
 local lapis = require("lapis")
 local config = require("lapis.config")
 -- local console = require("lapis.console")
+local pl = require('pl.import_into')()
+
 
 local Api = require("./Api")
 local bitser = require("./bitser")
 local log = require("./log")
-local split = require("./split")
 
 local app = lapis.Application()
 
@@ -54,7 +55,7 @@ app:match(
 
     -- URL based params
     if self.params.splat ~= nil then
-      local rawArgs = split(self.params.splat, "/")
+      local rawArgs = pl.stringx.split(self.params.splat, "/")
       for i, a in ipairs(rawArgs) do
         table.insert(args, interpretArg(a))
       end

@@ -1,0 +1,1 @@
+curl 'http://localhost:8080/api' -d '{"method":"add", "args": [3,4]}' -H "Content-Type: application/json

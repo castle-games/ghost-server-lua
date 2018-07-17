@@ -9,8 +9,7 @@ local io = require("io")
 local lapis = require("lapis")
 local config = require("lapis.config")
 -- local console = require("lapis.console")
-local pl = require('pl.import_into')()
-
+local pl = require("pl.import_into")()
 
 local Api = require("./Api")
 local bitser = require("./bitser")
@@ -45,41 +44,58 @@ local function interpretArg(s)
   return n
 end
 
-app:match(
-  "/api/:method(/*)",
+local function handleApiRequest(self)
+  local body = ngx.req.read_body()
+  local bodyData = ngx.req.get_body_data()
+  local contentType = self.req.headers["content-type"]
+
+  local data
+  if contentType == "application/json" then
+    data = cjson.decode(bodyData)
+  elseif contentType == "application/x-lua+bitser" then
+    data = bitser.loads(bodyData)
+  else
+    error("Use content-type application/json or application/x-lua+bitser")
+  end
+
+  local tk = time.start()
+  a = Api(data.context)
+  local response = a:callMethod(data.method, data.args)
+  time.done(tk, "api." .. data.method .. cjson.encode(data.args))
+
+  if contentType == "application/json" then
+    return {json = response}
+  elseif contentType == "application/x-lua+bitser" then
+    return {
+      content_type = "application/x-lua+bitser",
+      layout = false,
+      bitser.dumps(response)
+    }
+  else
+    error("Use content-type application/json or application/x-lua+bitser")
+  end
+end
+
+app:post(
+  "/api",
   function(self)
-    local tk = time.start()
-    local m = self.params.method
-
-    local args = {}
-
-    -- URL based params
-    if self.params.splat ~= nil then
-      local rawArgs = pl.stringx.split(self.params.splat, "/")
-      for i, a in ipairs(rawArgs) do
-        table.insert(args, interpretArg(a))
+    local ok, errOrResult =
+      pcall(
+      function()
+        return handleApiRequest(self)
       end
+    )
+    if ok then
+      return errOrResult
     else
-      -- Check headers to see if its Lua data
-      local contentType = self.req.headers["content-type"]
-      local httpMethod = self.req.cmd_mth
-
-      if httpMethod == "POST" then
-        local body = ngx.req.read_body()
-        local bodyData = ngx.req.get_body_data()
-        log(bodyData)
-      end
+      -- TODO: Handle client error type things
+      log("An error: " .. errOrResult)
+      return {
+        status = 500,
+        json = "An error occurred: " .. errOrResult
+      }
     end
-
-    local result = Api:callMethod(m, args)
-
-    time.done("api." .. m, {key = tk, message = m .. cjson.encode(args)})
-    time.done("request", {key = _TK})
-    self:write {content_type = "application/x-lua+bitser"}
-    return bitser.dumps(result)
   end
 )
-
--- app:match("/console", console.make())
 
 return app

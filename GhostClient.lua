@@ -2,7 +2,6 @@ local cjson = require("cjson")
 local Object = require("classic")
 local http = require("socket.http")
 local ltn12 = require("ltn12")
-local pl = require("pl.import_into")()
 
 local bitser = require("./bitser")
 

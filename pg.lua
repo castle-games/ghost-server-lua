@@ -2,7 +2,7 @@ local pgmoon = require("pgmoon")
 
 local secret = require("./secret")
 
-return pgmoon.new(
+local pg = pgmoon.new(
     {
         host = secret.postgres.host,
         port = "5432",
@@ -11,3 +11,5 @@ return pgmoon.new(
         user = secret.postgres.user
     }
 )
+
+return pg

@@ -9,10 +9,7 @@ function Api:add(a, b)
 end
 
 function Api:listPeople()
-  pg:connect()
-  local result = pg:query("SELECT * FROM people")
-  pg:keepalive()
-  return result
+  return pg:query("SELECT * FROM people")
 end
 
 function Api:error(type, code, message)

@@ -14,10 +14,12 @@ local pl = require("pl.import_into")()
 local Api = require("./Api")
 local bitser = require("./bitser")
 local log = require("./log")
+local pg = require("./pg")
 
 local app = lapis.Application()
 
 local _COUNT = 0
+
 
 config(
   {"develoment", "production"},
@@ -79,12 +81,18 @@ end
 app:post(
   "/api",
   function(self)
+    local tkc = time.start()
+    pg:connect()
+    time.done(tkc, "pg-connect")
     local ok, errOrResult =
       pcall(
       function()
         return handleApiRequest(self)
       end
     )
+    local tkk = time.start()
+    pg:keepalive()
+    time.done(tkk, "pg-keepalive")
     if ok then
       return errOrResult
     else
